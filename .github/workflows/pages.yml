@@ -10,13 +10,13 @@ permissions:
   pages: write
   id-token: write
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
@@ -28,9 +28,17 @@ jobs:
       - name: Upload website
         uses: actions/upload-pages-artifact@v3
         with:
-          name: github-pages
           path: .
 
-      - name: Deploy
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
