@@ -20,21 +20,6 @@ let currentIndex = -1;
 const defaultPhotos = [
 
     {
-        image: "images/1.jpg",
-        text: "Một khoảnh khắc đáng nhớ ❤️"
-    },
-
-    {
-        image: "images/2.jpg",
-        text: "Những ngày thật vui ❤️"
-    },
-
-    {
-        image: "images/3.jpg",
-        text: "Một kỷ niệm không thể quên ❤️"
-    },
-
-    {
         image: "images/4.jpg",
         text: "Together ❤️"
     }
