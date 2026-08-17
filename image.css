@@ -1,0 +1,537 @@
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+
+    margin: 0;
+
+    min-height: 100vh;
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff5fa,
+            #ffd9e8
+        );
+
+    color: #333;
+
+}
+
+
+/* =========================
+   PAGE
+========================= */
+
+.page {
+
+    min-height: 100vh;
+
+    padding: 35px;
+
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+
+    max-width: 1100px;
+
+    margin: 0 auto 40px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+
+}
+
+
+.header-title h1 {
+
+    margin: 0;
+
+    color: #d91861;
+
+    font-size: 32px;
+
+}
+
+
+.header-title p {
+
+    margin-top: 8px;
+
+    color: #a85a76;
+
+}
+
+
+/* =========================
+   BACK BUTTON
+========================= */
+
+.back-button {
+
+    border: none;
+
+    background: white;
+
+    color: #d91861;
+
+    padding: 12px 20px;
+
+    border-radius: 14px;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 7px 20px
+        rgba(220, 30, 100, 0.15);
+
+    transition: 0.25s;
+
+}
+
+
+.back-button:hover {
+
+    transform:
+        translateX(-5px);
+
+}
+
+
+/* =========================
+   GALLERY
+========================= */
+
+.gallery {
+
+    max-width: 1100px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 25px;
+
+}
+
+
+/* =========================
+   PHOTO CARD
+========================= */
+
+.photo-card {
+
+    background: white;
+
+    border-radius: 22px;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 15px 40px
+        rgba(220, 30, 100, 0.12);
+
+    transition: 0.3s;
+
+}
+
+
+.photo-card:hover {
+
+    transform:
+        translateY(-8px);
+
+    box-shadow:
+        0 25px 55px
+        rgba(220, 30, 100, 0.2);
+
+}
+
+
+.photo-card img {
+
+    width: 100%;
+
+    height: 260px;
+
+    object-fit: cover;
+
+    display: block;
+
+}
+
+
+.photo-card-content {
+
+    padding: 18px;
+
+}
+
+
+.photo-card-content h3 {
+
+    margin: 0 0 8px;
+
+    color: #d91861;
+
+}
+
+
+.photo-card-content p {
+
+    margin: 0;
+
+    color: #777;
+
+    line-height: 1.5;
+
+}
+
+
+/* =========================
+   ADD PHOTO
+========================= */
+
+.add-photo {
+
+    max-width: 1100px;
+
+    margin: 35px auto;
+
+    text-align: center;
+
+}
+
+
+.add-photo-button {
+
+    display: inline-block;
+
+    padding: 15px 30px;
+
+    border-radius: 15px;
+
+    background: #ed2d70;
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 25px
+        rgba(237, 45, 112, 0.25);
+
+    transition: 0.25s;
+
+}
+
+
+.add-photo-button:hover {
+
+    transform:
+        translateY(-3px);
+
+}
+
+
+/* =========================
+   DETAIL PAGE
+========================= */
+
+.detail-page {
+
+    display: none;
+
+}
+
+
+.detail-header {
+
+    max-width: 1100px;
+
+    margin: auto;
+
+}
+
+
+.detail-container {
+
+    max-width: 1000px;
+
+    margin: 35px auto;
+
+    display: grid;
+
+    grid-template-columns:
+        1.2fr 1fr;
+
+    gap: 50px;
+
+    align-items: center;
+
+}
+
+
+/* =========================
+   DETAIL IMAGE
+========================= */
+
+.detail-image-box {
+
+    background: white;
+
+    padding: 15px;
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 20px 50px
+        rgba(220, 30, 100, 0.18);
+
+}
+
+
+.detail-image-box img {
+
+    width: 100%;
+
+    max-height: 600px;
+
+    object-fit: contain;
+
+    display: block;
+
+    border-radius: 18px;
+
+}
+
+
+/* =========================
+   DETAIL CONTENT
+========================= */
+
+.detail-content {
+
+    background: rgba(255,255,255,0.8);
+
+    padding: 30px;
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 20px 50px
+        rgba(220, 30, 100, 0.1);
+
+}
+
+
+.detail-content h2 {
+
+    margin-top: 0;
+
+    color: #d91861;
+
+}
+
+
+.detail-content label {
+
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: #777;
+
+}
+
+
+.detail-content textarea {
+
+    width: 100%;
+
+    min-height: 180px;
+
+    resize: vertical;
+
+    padding: 15px;
+
+    border: 1px solid #f0bfd2;
+
+    border-radius: 15px;
+
+    outline: none;
+
+    font-size: 15px;
+
+    line-height: 1.6;
+
+    font-family: inherit;
+
+}
+
+
+.detail-content textarea:focus {
+
+    border-color: #ed2d70;
+
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.detail-buttons {
+
+    margin-top: 20px;
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+}
+
+
+.detail-buttons button {
+
+    border: none;
+
+    padding: 11px 16px;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+}
+
+
+.save-button {
+
+    background: #ed2d70;
+
+    color: white;
+
+}
+
+
+.change-image-button {
+
+    background: #ffe1ec;
+
+    color: #d91861;
+
+}
+
+
+.delete-button {
+
+    background: #eee;
+
+    color: #d91861;
+
+}
+
+
+/* =========================
+   EMPTY ALBUM
+========================= */
+
+.empty {
+
+    grid-column: 1 / -1;
+
+    text-align: center;
+
+    padding: 80px 20px;
+
+    color: #a85a76;
+
+}
+
+
+.empty h2 {
+
+    color: #d91861;
+
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 800px) {
+
+    .page {
+
+        padding: 20px;
+
+    }
+
+
+    .gallery {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+
+    .detail-container {
+
+        grid-template-columns: 1fr;
+
+        gap: 25px;
+
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .gallery {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .header {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+    }
+
+}

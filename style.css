@@ -1,0 +1,711 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+
+    font-family: Arial, sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            #ffffff 0%,
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            #ffc4dd 0%,
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #fff0f6,
+            #ffdce9,
+            #ffeef5
+        );
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.login-container {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.login-card {
+    width: 700px;
+    max-width: 95vw;
+
+    min-height: 380px;
+
+    display: flex;
+
+    padding: 25px;
+
+    gap: 45px;
+
+    border-radius: 30px;
+
+    background: rgba(255, 255, 255, 0.55);
+
+    border: 1px solid rgba(255, 255, 255, 0.8);
+
+    box-shadow:
+        0 25px 70px rgba(229, 30, 105, 0.15),
+        inset 0 0 30px rgba(255, 255, 255, 0.4);
+
+    backdrop-filter: blur(20px);
+
+    animation: cardAppear 1s ease;
+}
+
+/* =========================
+   IMAGE
+========================= */
+
+.photo-section {
+    width: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.photo-section img {
+    width: 100%;
+    max-width: 290px;
+
+    aspect-ratio: 3 / 4;
+
+    object-fit: cover;
+
+    border-radius: 18px;
+
+    border: 3px solid white;
+
+    box-shadow:
+        0 15px 35px rgba(218, 20, 92, 0.2);
+
+    transition: 0.4s ease;
+}
+
+.photo-section img:hover {
+    transform: scale(1.03) rotate(-1deg);
+}
+
+/* =========================
+   PIN SECTION
+========================= */
+
+.pin-section {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    padding-top: 10px;
+}
+
+/* =========================
+   HEART
+========================= */
+
+.heart {
+    font-size: 50px;
+
+    margin-bottom: 10px;
+
+    filter:
+        drop-shadow(
+            0 5px 8px rgba(225, 0, 80, 0.25)
+        );
+
+    animation: heartBeat 1.5s infinite;
+}
+
+/* =========================
+   PIN DOTS
+========================= */
+
+.pin-dots {
+    display: flex;
+
+    gap: 12px;
+
+    margin-bottom: 20px;
+}
+
+.pin-dots span {
+    width: 11px;
+    height: 11px;
+
+    border-radius: 50%;
+
+    border: 2px solid #df2368;
+
+    background: transparent;
+
+    transition: 0.2s ease;
+}
+
+.pin-dots span.active {
+    background: #e51b68;
+
+    transform: scale(1.15);
+
+    box-shadow:
+        0 0 8px rgba(229, 27, 104, 0.4);
+}
+
+/* =========================
+   NUMBER PAD
+========================= */
+
+.number-pad {
+    width: 220px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 12px;
+}
+
+.number-pad button {
+    width: 55px;
+    height: 42px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #d9165d;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    border-radius: 12px;
+
+    transition: 0.2s ease;
+}
+
+.number-pad button:hover {
+    background: rgba(255, 69, 133, 0.12);
+
+    transform: scale(1.08);
+}
+
+.number-pad button:active {
+    transform: scale(0.9);
+
+    background: rgba(255, 69, 133, 0.2);
+}
+
+.number-pad .delete {
+    color: #d9165d;
+}
+
+.number-pad .empty {
+    pointer-events: none;
+}
+
+/* =========================
+   HEART EFFECT
+========================= */
+
+.hearts {
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+}
+
+.floating-heart {
+    position: absolute;
+
+    bottom: -30px;
+
+    color: #f2387c;
+
+    opacity: 0.7;
+
+    animation: floatHeart linear forwards;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes cardAppear {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(40px)
+            scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+@keyframes heartBeat {
+
+    0% {
+        transform: scale(1);
+    }
+
+    25% {
+        transform: scale(1.15);
+    }
+
+    40% {
+        transform: scale(1);
+    }
+
+    60% {
+        transform: scale(1.12);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes floatHeart {
+
+    from {
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.7;
+    }
+
+    to {
+        transform:
+            translateY(-110vh)
+            rotate(360deg);
+
+        opacity: 0;
+    }
+}
+
+/* =========================
+   WRONG PIN
+========================= */
+
+.shake {
+    animation: shake 0.4s ease;
+}
+
+@keyframes shake {
+
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-10px);
+    }
+
+    50% {
+        transform: translateX(10px);
+    }
+
+    75% {
+        transform: translateX(-10px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 650px) {
+
+    .login-card {
+        width: 350px;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 20px;
+
+        padding: 20px;
+    }
+
+    .photo-section {
+        width: 100%;
+    }
+
+    .photo-section img {
+        width: 150px;
+        height: 190px;
+    }
+
+    .pin-section {
+        width: 100%;
+    }
+
+    .heart {
+        font-size: 40px;
+    }
+
+}
+
+/* =================================
+   HOME PAGE
+================================= */
+
+.home-page {
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+
+/* CONTAINER */
+
+.home-container {
+
+    width: 100%;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 40px 20px;
+
+    text-align: center;
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+
+/* TITLE */
+
+.home-container h1 {
+
+    color: #d9165d;
+
+    font-size: 36px;
+
+    margin-bottom: 10px;
+
+    text-shadow:
+        0 5px 15px
+        rgba(217, 22, 93, 0.15);
+
+    animation:
+        homeTitle 0.8s ease;
+
+}
+
+
+.subtitle {
+
+    color: #d94a7c;
+
+    font-size: 16px;
+
+    margin-bottom: 40px;
+
+}
+
+
+/* MENU */
+
+.menu {
+
+    width: 650px;
+
+    max-width: 95vw;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 18px;
+
+}
+
+
+/* CARD */
+
+.menu-card {
+
+    min-height: 180px;
+
+    padding: 30px 20px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    cursor: pointer;
+
+    border-radius: 25px;
+
+    background:
+        rgba(255, 255, 255, 0.65);
+
+    border:
+        1px solid
+        rgba(225, 36, 108, 0.3);
+
+    box-shadow:
+        0 15px 35px
+        rgba(220, 30, 100, 0.12);
+
+    backdrop-filter: blur(15px);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+
+    animation:
+        menuAppear 0.7s ease backwards;
+
+}
+
+
+/* DELAY */
+
+.menu-card:nth-child(1) {
+
+    animation-delay: 0.1s;
+
+}
+
+.menu-card:nth-child(2) {
+
+    animation-delay: 0.2s;
+
+}
+
+.menu-card:nth-child(3) {
+
+    animation-delay: 0.3s;
+
+}
+
+.menu-card:nth-child(4) {
+
+    animation-delay: 0.4s;
+
+}
+
+
+/* HOVER */
+
+.menu-card:hover {
+
+    transform:
+        translateY(-10px)
+        scale(1.03);
+
+    background:
+        rgba(255, 255, 255, 0.85);
+
+    box-shadow:
+        0 25px 50px
+        rgba(220, 30, 100, 0.2);
+
+}
+
+
+/* ICON */
+
+.menu-icon {
+
+    font-size: 50px;
+
+    margin-bottom: 12px;
+
+    transition:
+        transform 0.3s ease;
+
+}
+
+
+.menu-card:hover .menu-icon {
+
+    transform:
+        scale(1.2)
+        rotate(-5deg);
+
+}
+
+
+/* TITLE */
+
+.menu-card h2 {
+
+    color: #d9165d;
+
+    font-size: 20px;
+
+    margin-bottom: 8px;
+
+}
+
+
+/* DESCRIPTION */
+
+.menu-card p {
+
+    color: #d35a83;
+
+    font-size: 13px;
+
+}
+
+
+/* ANIMATION */
+
+@keyframes menuAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(40px)
+            scale(0.9);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+@keyframes homeTitle {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(-30px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .home-container h1 {
+
+        font-size: 27px;
+
+    }
+
+    .menu {
+
+        grid-template-columns:
+            1fr 1fr;
+
+        gap: 12px;
+
+    }
+
+    .menu-card {
+
+        min-height: 150px;
+
+        padding: 20px 10px;
+
+    }
+
+    .menu-icon {
+
+        font-size: 40px;
+
+    }
+
+    .menu-card h2 {
+
+        font-size: 17px;
+
+    }
+
+}

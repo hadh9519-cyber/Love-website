@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Our Memories ❤️</title>
+
+    <link rel="stylesheet" href="image.css">
+
+</head>
+
+
+<body>
+
+    <!-- =========================
+         ALBUM PAGE
+    ========================== -->
+
+    <div
+        id="albumPage"
+        class="page"
+    >
+
+        <header class="header">
+
+            <button
+                class="back-button"
+                onclick="goHome()"
+            >
+                ← Quay lại
+            </button>
+
+
+            <div class="header-title">
+
+                <h1>
+                    🖼 Our Memories
+                </h1>
+
+                <p>
+                    Những khoảnh khắc của chúng ta ❤️
+                </p>
+
+            </div>
+
+        </header>
+
+
+        <!-- ALBUM -->
+
+        <main>
+
+            <div
+                id="gallery"
+                class="gallery"
+            >
+            </div>
+
+
+            <!-- ADD PHOTO -->
+
+            <div class="add-photo">
+
+                <label
+                    for="newPhoto"
+                    class="add-photo-button"
+                >
+                    ＋ Thêm ảnh
+                </label>
+
+                <input
+                    type="file"
+                    id="newPhoto"
+                    accept="image/*"
+                    hidden
+                >
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+
+    <!-- =========================
+         DETAIL PAGE
+    ========================== -->
+
+    <div
+        id="detailPage"
+        class="page detail-page"
+    >
+
+        <header class="detail-header">
+
+            <button
+                class="back-button"
+                onclick="backToAlbum()"
+            >
+                ← Quay lại
+            </button>
+
+        </header>
+
+
+        <main class="detail-container">
+
+            <!-- IMAGE -->
+
+            <div class="detail-image-box">
+
+                <img
+                    id="detailImage"
+                    src=""
+                    alt="Memory"
+                >
+
+            </div>
+
+
+            <!-- CONTENT -->
+
+            <div class="detail-content">
+
+                <h2>
+                    ❤️ Kỷ niệm
+                </h2>
+
+
+                <label>
+                    Viết điều gì đó về bức ảnh
+                </label>
+
+
+                <textarea
+                    id="detailText"
+                    placeholder="Hôm đó chúng mình..."
+                ></textarea>
+
+
+                <div class="detail-buttons">
+
+                    <button
+                        class="save-button"
+                        onclick="saveDetail()"
+                    >
+                        💾 Lưu
+                    </button>
+
+
+                    <button
+                        class="change-image-button"
+                        onclick="changeImage()"
+                    >
+                        🖼 Thay ảnh
+                    </button>
+
+
+                    <button
+                        class="delete-button"
+                        onclick="deleteCurrentPhoto()"
+                    >
+                        🗑 Xóa
+                    </button>
+
+                </div>
+
+
+                <input
+                    type="file"
+                    id="changePhotoInput"
+                    accept="image/*"
+                    hidden
+                >
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <script src="image.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Our Letters ❤️</title>
+
+    <link rel="stylesheet" href="letter.css">
+
+</head>
+
+<body class="letter-page">
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header class="letter-header">
+
+        <button
+            class="back-btn"
+            onclick="goHome()"
+        >
+            ← Quay lại trang chính
+        </button>
+
+        <div class="header-title">
+
+            <h1>
+                💌 Our Letters
+            </h1>
+
+            <p>
+                Những điều muốn nói với nhau ❤️
+            </p>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+
+    <main class="letter-container">
+
+
+        <!-- =====================
+             VIẾT THƯ
+        ====================== -->
+
+        <section class="letter-editor">
+
+            <h2>
+                ✍️ Viết một lá thư
+            </h2>
+
+
+            <!-- TIÊU ĐỀ -->
+
+            <input
+                type="text"
+                id="letterTitle"
+                class="letter-title"
+                placeholder="Tiêu đề lá thư..."
+            >
+
+
+            <!-- NGƯỜI NHẬN -->
+
+            <input
+                type="text"
+                id="letterTo"
+                class="letter-to"
+                placeholder="Gửi đến..."
+            >
+
+
+            <!-- NỘI DUNG -->
+
+            <textarea
+                id="letterContent"
+                class="letter-content"
+                placeholder="Viết những điều bạn muốn nói ở đây..."
+            ></textarea>
+
+
+            <!-- ẢNH -->
+
+            <div class="image-upload">
+
+                <label for="letterImage">
+                    🖼️ Thêm ảnh vào thư
+                </label>
+
+                <input
+                    type="file"
+                    id="letterImage"
+                    accept="image/*"
+                >
+
+            </div>
+
+
+            <!-- PREVIEW ẢNH -->
+
+            <div
+                id="imagePreview"
+                class="image-preview"
+            ></div>
+
+
+            <!-- BUTTON -->
+
+            <div class="editor-buttons">
+
+                <button
+                    class="preview-btn"
+                    onclick="previewLetter()"
+                >
+                    👀 Xem trước
+                </button>
+
+                <button
+                    class="save-btn"
+                    onclick="saveLetter()"
+                >
+                    💾 Lưu thư
+                </button>
+
+                <button
+                    class="clear-btn"
+                    onclick="clearLetter()"
+                >
+                    🗑️ Xóa
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================
+             PREVIEW
+        ====================== -->
+
+        <section
+    id="letterPreview"
+    class="letter-preview"
+    style="display:none;"
+>
+
+    <div class="paper">
+
+        <div class="paper-decoration">
+            ❤️
+        </div>
+
+        <h2 id="previewTitle">
+            Một lá thư dành cho bạn
+        </h2>
+
+        <!-- NGƯỜI NHẬN -->
+
+        <p
+            id="previewTo"
+            class="preview-to"
+        ></p>
+
+
+        <!-- ẢNH -->
+
+        <img
+            id="previewImage"
+            class="preview-image"
+            style="display:none;"
+            alt="Ảnh trong thư"
+        >
+
+
+        <!-- NỘI DUNG -->
+
+        <div
+            id="previewContent"
+            class="preview-content"
+        ></div>
+
+
+        <!-- CHỮ KÝ -->
+
+        <div
+            id="previewSignature"
+            class="signature"
+            style="display:none;"
+        ></div>
+
+    </div>
+
+</section>
+
+
+
+        <!-- =====================
+             THƯ ĐÃ LƯU
+        ====================== -->
+
+        <section class="saved-section">
+
+            <h2>
+                💌 Những lá thư đã lưu
+            </h2>
+
+            <div
+                id="savedLetters"
+                class="saved-letters"
+            ></div>
+
+        </section>
+
+
+    </main>
+
+
+    <script>
+
+        /* =========================
+           QUAY LẠI TRANG CHÍNH
+        ========================== */
+
+        function goHome() {
+
+            window.location.href = "index.html";
+
+        }
+
+
+        /* =========================
+           ẢNH
+        ========================== */
+
+        let selectedImage = "";
+
+
+        document
+            .getElementById("letterImage")
+            .addEventListener(
+                "change",
+                function(event) {
+
+                    const file =
+                        event.target.files[0];
+
+                    if (!file) {
+                        return;
+                    }
+
+                    const reader =
+                        new FileReader();
+
+                    reader.onload =
+                        function(e) {
+
+                            selectedImage =
+                                e.target.result;
+
+                            document
+                                .getElementById(
+                                    "imagePreview"
+                                )
+                                .innerHTML = `
+                                    <img
+                                        src="${selectedImage}"
+                                        alt="Ảnh trong thư"
+                                    >
+                                `;
+
+                        };
+
+                    reader.readAsDataURL(file);
+
+                }
+            );
+
+
+        /* =========================
+           XEM TRƯỚC
+        ========================== */
+
+        function previewLetter() {
+
+            const title =
+                document
+                    .getElementById("letterTitle")
+                    .value;
+
+            const to =
+                document
+                    .getElementById("letterTo")
+                    .value;
+
+            const content =
+                document
+                    .getElementById("letterContent")
+                    .value;
+
+
+            document
+                .getElementById("previewTitle")
+                .textContent =
+                    title ||
+                    "Một lá thư dành cho em";
+
+
+            document
+                .getElementById("previewTo")
+                .textContent =
+                    to
+                        ? "Gửi " + to + " ❤️"
+                        : "";
+
+
+            document
+                .getElementById("previewContent")
+                .textContent =
+                    content;
+
+
+            const previewImage =
+                document
+                    .getElementById("previewImage");
+
+
+            if (selectedImage) {
+
+                previewImage.src =
+                    selectedImage;
+
+                previewImage.style.display =
+                    "block";
+
+            }
+            else {
+
+                previewImage.style.display =
+                    "none";
+
+            }
+
+
+            document
+                .getElementById("letterPreview")
+                .style.display =
+                    "block";
+
+
+            document
+                .getElementById("letterPreview")
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
+
+        }
+
+
+        /* =========================
+           LƯU THƯ
+        ========================== */
+
+        function saveLetter() {
+
+            const title =
+                document
+                    .getElementById("letterTitle")
+                    .value.trim();
+
+            const to =
+                document
+                    .getElementById("letterTo")
+                    .value.trim();
+
+            const content =
+                document
+                    .getElementById("letterContent")
+                    .value.trim();
+
+
+            if (!title && !content) {
+
+                alert(
+                    "💌 Hãy viết thư trước khi lưu!"
+                );
+
+                return;
+
+            }
+
+
+            const letter = {
+
+                id: Date.now(),
+
+                title:
+                    title ||
+                    "Một lá thư ❤️",
+
+                to: to,
+
+                content: content,
+
+                image:
+                    selectedImage,
+
+                date:
+                    new Date()
+                        .toLocaleString("vi-VN")
+
+            };
+
+
+            let letters =
+                JSON.parse(
+                    localStorage.getItem(
+                        "ourLetters"
+                    )
+                ) || [];
+
+
+            letters.push(letter);
+
+
+            localStorage.setItem(
+                "ourLetters",
+                JSON.stringify(letters)
+            );
+
+
+            alert(
+                "💌 Đã lưu lá thư!"
+            );
+
+
+            loadLetters();
+
+        }
+
+
+        /* =========================
+           XÓA FORM
+        ========================== */
+
+        function clearLetter() {
+
+            document
+                .getElementById("letterTitle")
+                .value = "";
+
+            document
+                .getElementById("letterTo")
+                .value = "";
+
+            document
+                .getElementById("letterContent")
+                .value = "";
+
+            document
+                .getElementById("letterImage")
+                .value = "";
+
+            document
+                .getElementById("imagePreview")
+                .innerHTML = "";
+
+            document
+                .getElementById("letterPreview")
+                .style.display =
+                    "none";
+
+            selectedImage = "";
+
+        }
+
+
+        /* =========================
+           HIỂN THỊ THƯ ĐÃ LƯU
+        ========================== */
+
+        function loadLetters() {
+
+            const container =
+                document
+                    .getElementById(
+                        "savedLetters"
+                    );
+
+
+            let letters =
+                JSON.parse(
+                    localStorage.getItem(
+                        "ourLetters"
+                    )
+                ) || [];
+
+
+            container.innerHTML = "";
+
+
+            if (letters.length === 0) {
+
+                container.innerHTML = `
+                    <div class="empty-letter">
+                        💌 Chưa có lá thư nào được lưu.
+                    </div>
+                `;
+
+                return;
+
+            }
+
+
+            letters
+                .slice()
+                .reverse()
+                .forEach(
+                    function(letter) {
+
+                        const card =
+                            document.createElement(
+                                "div"
+                            );
+
+                        card.className =
+                            "saved-card";
+
+
+                        card.innerHTML = `
+
+                            <div class="saved-info">
+
+                                <h3>
+                                    💌 ${escapeHTML(
+                                        letter.title
+                                    )}
+                                </h3>
+
+                                <p>
+                                    ${
+                                        letter.to
+                                            ? "Gửi: " +
+                                              escapeHTML(
+                                                  letter.to
+                                              )
+                                            : ""
+                                    }
+                                </p>
+
+                                <small>
+                                    ${letter.date}
+                                </small>
+
+                            </div>
+
+
+                            <div class="saved-actions">
+
+                                <button
+                                    onclick="viewLetter(${letter.id})"
+                                >
+                                    👀 Xem
+                                </button>
+
+                                <button
+                                    class="delete-btn"
+                                    onclick="deleteLetter(${letter.id})"
+                                >
+                                    🗑️ Xóa
+                                </button>
+
+                            </div>
+
+                        `;
+
+
+                        container.appendChild(
+                            card
+                        );
+
+                    }
+                );
+
+        }
+
+
+        /* =========================
+           XEM THƯ ĐÃ LƯU
+        ========================== */
+
+        function viewLetter(id) {
+
+            const letters =
+                JSON.parse(
+                    localStorage.getItem(
+                        "ourLetters"
+                    )
+                ) || [];
+
+
+            const letter =
+                letters.find(
+                    item =>
+                        item.id === id
+                );
+
+
+            if (!letter) {
+                return;
+            }
+
+
+            document
+                .getElementById("previewTitle")
+                .textContent =
+                    letter.title;
+
+
+            document
+                .getElementById("previewTo")
+                .textContent =
+                    letter.to
+                        ? "Gửi " +
+                          letter.to +
+                          " ❤️"
+                        : "";
+
+
+            document
+                .getElementById("previewContent")
+                .textContent =
+                    letter.content;
+
+
+            const image =
+                document
+                    .getElementById(
+                        "previewImage"
+                    );
+
+
+            if (letter.image) {
+
+                image.src =
+                    letter.image;
+
+                image.style.display =
+                    "block";
+
+            }
+            else {
+
+                image.style.display =
+                    "none";
+
+            }
+
+
+            document
+                .getElementById(
+                    "letterPreview"
+                )
+                .style.display =
+                    "block";
+
+
+            document
+                .getElementById(
+                    "letterPreview"
+                )
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
+
+        }
+
+
+        /* =========================
+           XÓA THƯ
+        ========================== */
+
+        function deleteLetter(id) {
+
+            if (
+                !confirm(
+                    "Bạn có chắc muốn xóa lá thư này?"
+                )
+            ) {
+                return;
+            }
+
+
+            let letters =
+                JSON.parse(
+                    localStorage.getItem(
+                        "ourLetters"
+                    )
+                ) || [];
+
+
+            letters =
+                letters.filter(
+                    letter =>
+                        letter.id !== id
+                );
+
+
+            localStorage.setItem(
+                "ourLetters",
+                JSON.stringify(letters)
+            );
+
+
+            loadLetters();
+
+        }
+
+
+        /* =========================
+           CHỐNG HTML
+        ========================== */
+
+        function escapeHTML(text) {
+
+            const div =
+                document.createElement(
+                    "div"
+                );
+
+            div.textContent =
+                text;
+
+            return div.innerHTML;
+
+        }
+
+
+        /* =========================
+           LOAD
+        ========================== */
+
+        loadLetters();
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Gift ❤️</title>
+
+    <link rel="stylesheet" href="gift.css">
+
+</head>
+
+
+<body class="gift-page">
+
+
+    <!-- =========================
+         TIM BAY
+    ========================== -->
+
+    <div class="hearts"></div>
+
+
+    <!-- =========================
+         NÚT QUAY LẠI
+    ========================== -->
+
+    <button
+        class="back-btn"
+        onclick="goHome()"
+    >
+        ← Quay lại trang chính
+    </button>
+
+
+    <!-- =========================
+         TIÊU ĐỀ
+    ========================== -->
+
+    <main class="gift-container">
+
+        <h1>
+            🎁 A Little Gift For You ❤️
+        </h1>
+
+        <p class="subtitle">
+            Chọn một bức ảnh để bắt đầu
+        </p>
+
+
+        <!-- =========================
+             KHU VỰC ẢNH BAY
+        ========================== -->
+
+        <div
+            class="balloon-area"
+            id="balloonArea"
+        >
+
+            <!--
+                Ban đầu để trống.
+                Chọn ảnh thì JavaScript
+                mới tạo ảnh ở đây.
+            -->
+
+        </div>
+
+
+        <!-- =========================
+             HỘP CHỌN ẢNH
+        ========================== -->
+
+        <section class="photo-picker">
+
+
+            <h2>
+                🖼️ Những khoảnh khắc
+            </h2>
+
+
+            <p>
+                Chọn ảnh bạn muốn gửi lên bầu trời ❤️
+            </p>
+
+
+            <!-- ẢNH CÓ SẴN -->
+
+            <div class="available-photos">
+
+
+                <button
+                    class="photo-option"
+                    onclick="selectPhoto('images/1.jpg')"
+                >
+
+                    <img src="images/1.jpg">
+
+                </button>
+
+
+                <button
+                    class="photo-option"
+                    onclick="selectPhoto('images/2.jpg')"
+                >
+
+                    <img src="images/2.jpg">
+
+                </button>
+
+
+                <button
+                    class="photo-option"
+                    onclick="selectPhoto('images/3.jpg')"
+                >
+
+                    <img src="images/3.jpg">
+
+                </button>
+
+
+                <button
+                    class="photo-option"
+                    onclick="selectPhoto('images/4.jpg')"
+                >
+
+                    <img src="images/4.jpg">
+
+                </button>
+
+
+                <button
+                    class="photo-option"
+                    onclick="selectPhoto('images/admin.jpg')"
+                >
+
+                    <img src="images/admin.jpg">
+
+                </button>
+
+
+            </div>
+
+
+            <!-- CHỌN ẢNH TỪ MÁY -->
+
+            <label class="upload-btn">
+
+                📷 Chọn ảnh từ máy
+
+                <input
+                    type="file"
+                    id="imageInput"
+                    accept="image/*"
+                    multiple
+                    hidden
+                >
+
+            </label>
+
+
+        </section>
+
+
+        <!-- =========================
+             LỜI NHẮN
+        ========================== -->
+
+        <div class="bottom-message">
+
+            <div class="message-heart">
+                ❤️
+            </div>
+
+            <h2>
+                Những kỷ niệm của chúng ta
+            </h2>
+
+            <p>
+                Mỗi bức ảnh là một câu chuyện,
+                mỗi khoảnh khắc đều đáng được lưu giữ.
+            </p>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- =========================
+         HIỂN THỊ ẢNH LỚN
+    ========================== -->
+
+    <div
+        class="image-modal"
+        id="imageModal"
+    >
+
+        <button
+            class="modal-close"
+            onclick="closeImage()"
+        >
+            ×
+        </button>
+
+
+        <img
+            id="modalImage"
+            src=""
+            alt="Ảnh"
+        >
+
+
+        <p>
+            ✨ Một khoảnh khắc đáng nhớ ✨
+        </p>
+
+    </div>
+
+
+    <script src="gift.js"></script>
+
+</body>
+
+</html>

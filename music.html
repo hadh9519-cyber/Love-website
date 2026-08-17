@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Music Player ❤️</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="music.css">
+
+</head>
+
+<body>
+
+    <div class="music-container">
+
+        <!-- NÚT QUAY LẠI -->
+        <button
+            class="back-home-btn"
+            onclick="goHome()"
+        >
+            ← Quay lại trang chính
+        </button>
+
+
+        <!-- PLAYER -->
+        <div class="player">
+
+            <div class="player-left">
+
+                <div class="player-title">
+                    🎧 MUSIC PLAYER
+                </div>
+
+                <img
+                    id="albumImage"
+                    src="images/1.jpg"
+                    alt="Đau Để Trưởng Thành"
+                >
+
+                <h2>
+                    ĐAU ĐỂ TRƯỞNG THÀNH
+                </h2>
+
+                <p>
+                    Hương Ly - Hồng Thưởng
+                </p>
+
+
+                <!-- SOUNDCLOUD -->
+
+                <iframe
+                    width="100%"
+                    height="166"
+                    scrolling="no"
+                    frameborder="no"
+                    allow="autoplay; encrypted-media"
+                    src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A1533749974&color=%23ff1493&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false">
+                </iframe>
+
+            </div>
+
+
+            <!-- PLAYLIST -->
+
+            <div class="playlist">
+
+                <h2>
+                    Playlist ❤️
+                </h2>
+
+                <div class="song active">
+
+                    <img
+                        src="images/1.jpg"
+                        alt="Đau Để Trưởng Thành"
+                    >
+
+                    <div>
+
+                        <strong>
+                            Đau Để Trưởng Thành Remix
+                        </strong>
+
+                        <small>
+                            Hương Ly - Hồng Thưởng
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        function goHome() {
+
+            window.location.href = "home.html";
+
+        }
+
+    </script>
+
+</body>
+
+</html>

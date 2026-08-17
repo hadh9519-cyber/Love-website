@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Our Little World ❤️</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Hiệu ứng trái tim bay -->
+    <div class="hearts"></div>
+
+    <main class="login-container">
+
+        <div class="login-card">
+
+            <!-- Ảnh -->
+            <div class="photo-section">
+                <img src="images/admin.jpg" alt="Our photo">
+            </div>
+
+            <!-- Khu vực nhập PIN -->
+            <div class="pin-section">
+
+                <div class="heart">
+                    ❤️
+                </div>
+
+                <div class="pin-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <div class="number-pad">
+
+                    <button onclick="pressNumber(1)">1</button>
+                    <button onclick="pressNumber(2)">2</button>
+                    <button onclick="pressNumber(3)">3</button>
+
+                    <button onclick="pressNumber(4)">4</button>
+                    <button onclick="pressNumber(5)">5</button>
+                    <button onclick="pressNumber(6)">6</button>
+
+                    <button onclick="pressNumber(7)">7</button>
+                    <button onclick="pressNumber(8)">8</button>
+                    <button onclick="pressNumber(9)">9</button>
+
+                    <button class="empty"></button>
+
+                    <button onclick="pressNumber(0)">0</button> 
+
+                    <button class="delete" onclick="deleteNumber()">
+                        ⌫
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

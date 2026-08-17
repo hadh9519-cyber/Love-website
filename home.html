@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Our Little World ❤️</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body class="home-page">
+
+    <!-- Tim bay -->
+    <div class="hearts"></div>
+
+    <main class="home-container">
+
+        <h1>Welcome to Our Little World ❤️</h1>
+
+        <p class="subtitle">
+            Một nơi nhỏ dành riêng cho chúng ta
+        </p>
+
+        <!-- MENU -->
+
+        <div class="menu">
+
+            <!-- MUSIC -->
+
+            <div
+                class="menu-card"
+                onclick="openMusic()"
+            >
+
+                <div class="menu-icon">
+                    🎧
+                </div>
+
+                <h2>Music</h2>
+
+                <p>
+                    Những bài hát của chúng ta
+                </p>
+
+            </div>
+
+
+            <!-- LETTER -->
+
+            <div
+                class="menu-card"
+                onclick="openLetter()"
+            >
+
+                <div class="menu-icon">
+                    💌
+                </div>
+
+                <h2>Letter</h2>
+
+                <p>
+                    Một bức thư dành cho em
+                </p>
+
+            </div>
+
+
+            <!-- IMAGE -->
+
+            <div
+                class="menu-card"
+                onclick="openImage()"
+            >
+
+                <div class="menu-icon">
+                    🖼️
+                </div>
+
+                <h2>Image</h2>
+
+                <p>
+                    Những khoảnh khắc đáng nhớ
+                </p>
+
+            </div>
+
+
+            <!-- GIFT -->
+
+            <div
+                class="menu-card"
+                onclick="openGift()"
+            >
+
+                <div class="menu-icon">
+                    🎁
+                </div>
+
+                <h2>Gift</h2>
+
+                <p>
+                    Một món quà nhỏ dành cho em
+                </p>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <script>
+
+        function openMusic() {
+    window.location.href = "music.html";
+}
+
+
+        function openLetter() {
+
+    window.location.href = "letter.html";
+
+}
+
+
+        function openImage() {
+    window.location.href = "image.html";
+}
+
+        function openGift() {
+
+    window.location.href = "gift.html";
+
+        }
+
+
+        // =========================
+        // TIM BAY
+        // =========================
+
+        function createHeart() {
+
+            const heart =
+                document.createElement("div");
+
+            heart.className =
+                "floating-heart";
+
+            heart.innerHTML = "♥";
+
+            heart.style.left =
+                Math.random() * 100 + "%";
+
+            heart.style.fontSize =
+                (10 + Math.random() * 15) + "px";
+
+            heart.style.animationDuration =
+                (5 + Math.random() * 5) + "s";
+
+            document
+                .querySelector(".hearts")
+                .appendChild(heart);
+
+            setTimeout(() => {
+
+                heart.remove();
+
+            }, 10000);
+
+        }
+
+
+        setInterval(createHeart, 700);
+
+    </script>
+
+</body>
+
+</html>
